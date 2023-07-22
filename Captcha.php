@@ -10,6 +10,7 @@ namespace library\captcha;
 
 use cleanphp\App as CleanApp;
 use cleanphp\base\Session;
+use cleanphp\base\Variables;
 
 class Captcha
 {
@@ -44,7 +45,7 @@ class Captcha
         $str = $this->generateCode($scene);
 
         for ($i = 0; $i < 4; $i++) {
-            imagettftext($image, rand(20, 38), rand(0, 30), $i * 50 + 25, rand(30, 70), $this->color($image), CleanApp::getLibPath('captcha', 'fonts', 'Bitsumishi.ttf'), $str[$i]);
+            imagettftext($image, rand(20, 38), rand(0, 30), $i * 50 + 25, rand(30, 70), $this->color($image), Variables::getLibPath('captcha', 'fonts', 'Bitsumishi.ttf'), $str[$i]);
         }
 
         @header('Content-type:image/jpeg');

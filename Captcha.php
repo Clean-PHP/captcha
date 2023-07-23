@@ -21,12 +21,12 @@ class Captcha
         return $this->result;
     }
 
-    public function verify(string $scene, string $code): bool
+    public function verify(string $scene, int $code): bool
     {
         $this->result = Session::getInstance()->get($scene);
         Session::getInstance()->delete($scene);
 
-        return intval($code) === intval($this->result);
+        return $code === intval($this->result);
     }
 
     public function create(string $scene): void

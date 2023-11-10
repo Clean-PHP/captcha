@@ -14,7 +14,7 @@ use cleanphp\base\Variables;
 
 class Captcha
 {
-    private string $result;
+    private string $result = "999";
 
     public function getResult(): string
     {
@@ -23,7 +23,7 @@ class Captcha
 
     public function verify(string $scene, int $code): bool
     {
-        $this->result = Session::getInstance()->get($scene);
+        $this->result = Session::getInstance()->get($scene,"999");
         Session::getInstance()->delete($scene);
 
         return $code === intval($this->result);
